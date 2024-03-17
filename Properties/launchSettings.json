@@ -2,7 +2,6 @@
   "profiles": {
     "Lesson_008_Bufferization": {
       "commandName": "Project",
-      "commandLineArgs": "E:\\LessonsGB\\Lesson_008_Bufferization\\file1.txt Тест",
       "workingDirectory": "E:\\LessonsGB\\Lesson_008_Bufferization"
     }
   }

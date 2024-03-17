@@ -1,9 +1,13 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using Microsoft.VisualBasic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Lesson_008_Bufferization
 {
     internal class Program
     {
+        
         static void Main(string[] args)
         {
             /*SearchFile(args[0], args[1]);
@@ -11,8 +15,32 @@ namespace Lesson_008_Bufferization
             {
                 Console.WriteLine(arg);
             }*/
-            Task3(args);
+            HW(@"E:\LessonsGB");
 
+        }
+        static List<string> listHW = new List<string>();
+        public static void HW(string path)
+        {
+            listHW.AddRange(Directory.GetFiles(path, "*.txt", SearchOption.AllDirectories));
+            List<string> tempList = new List<string>();
+            foreach (string file in listHW)
+            {
+                using (StreamReader sr = new StreamReader(file))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        var tempString = sr.ReadToEnd();
+                        if (tempString.Contains("Тест"))
+                        {
+                            tempList.Add(file);
+                        }
+                    }
+                }
+            }
+            foreach (var item in tempList)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         public static void Task1(string[] args)
